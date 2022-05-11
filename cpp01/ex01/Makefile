@@ -1,26 +1,22 @@
-NAME = horde
+NAME = zombieHorde
 
 SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
-OBJS = $(SRCS:.cpp=.o)
+OBJS  = $(SRCS:.cpp=.o)
 
-CC = c++
+CFLAGS  = -Wall -Wextra -Werror -std=c++98
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+all : $(NAME)
 
 
-all: $(NAME)
+$(NAME) : $(OBJS)
+	c++ $(CFLAGS) $(SRCS) -o $@
 
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -o $@ $^
-	@printf "\n\t\033[1;34mCompilation successful\033[0m\n\n"
-
-clean:
-	@rm -f $(OBJS)
-
-fclean:
-	@rm -f $(NAME) $(OBJS)
+clean :
+	rm -f $(OBJS)
+fclean :
+	rm -f $(NAME) $(OBJS)
 
 re : fclean all
 
-.PHONY: all clean fclean re
+.PHONY : all clean fclean re

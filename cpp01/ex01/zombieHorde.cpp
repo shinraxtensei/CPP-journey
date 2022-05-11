@@ -1,14 +1,14 @@
 #include "Zombie.hpp"
 
+
 Zombie* zombieHorde( int N, std::string name )
 {
-    int i  = 0;
-    Zombie* horde = new Zombie[N];
+    Zombie *zombie = new Zombie[N];
+    int i = 0;
     while (i < N)
     {
-        horde[i].newName(name);
-        
+        zombie[i].baptiseZombie(name);
         i++;
     }
-    return horde;
+    return zombie;
 }

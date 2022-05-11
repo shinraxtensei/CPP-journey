@@ -1,14 +1,14 @@
-#include "iostream"
+#include <iostream>
 
 class Zombie
 {
-    private:
+    private :
         std::string name;
-    public:
+    public :
         Zombie(std::string name);
         ~Zombie();
         void announce();
-};
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+};
+        Zombie* newZombie( std::string name);
+        void randomChump( std::string name);

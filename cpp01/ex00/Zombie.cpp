@@ -4,11 +4,26 @@ Zombie::Zombie(std::string name)
 {
     this->name = name;
 }
-~Zombie::Zombie()
+
+Zombie::~Zombie()
 {
-    std::cout << "Zombie " << this->name << " died" << std::endl;
+    // print only the name of the zombie in red color then print died
+    std::cout << "\033[31m" << this->name << " died\033[0m" << std::endl;
 }
-void Zombie::announce()
+
+void    Zombie::announce()
 {
-    std::cout << this->name << "BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout  << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+Zombie* newZombie( std::string name)
+{
+    Zombie* newZombie = new Zombie(name);
+    return newZombie;
+}
+
+void randomChump( std::string name)
+{
+    Zombie* zombie = newZombie(name);
+    zombie->announce();
 }
