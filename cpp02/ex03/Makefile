@@ -1,6 +1,6 @@
 NAME = Fixed
 
-SRCS = Fixed.cpp  main.cpp Makfile Point.cpp bsp.cpp
+SRCS = main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

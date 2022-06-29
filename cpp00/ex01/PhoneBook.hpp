@@ -3,15 +3,15 @@
 
 class PhoneBook
 {
-    private :
+    private:
         Contact contacts[8];
         int id ;
-    public :
-        PhoneBook(void);
+    public:
+        PhoneBook();
         ~PhoneBook();
-        void AddContact(void);
-        void SearchContact(void);
-        void full_info(void);
-        void increment_id(void);
-        int get_id(void);
+        void AddContact();
+        void SearchContact();
+        std::string ReqestData(std::string promt );
+        int getId();
+        void setId(int id);
 };

@@ -1,50 +1,55 @@
 #include "Contact.hpp"
 
-Contact::Contact(void)
-{
-    return ;
-}
+Contact::Contact() {index = 0 ;};
+Contact::~Contact(){};
 
-Contact::~Contact()
+void    Contact::AddContact(std::string firstName, std::string lastName, std::string nickname, std::string phonenumber, std::string darkestsecret , int index)
 {
-    return;
-}
-
-
-void Contact::AddContact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret, int id)
-{
-    this->id = id;
     this->firstName = firstName;
     this->lastName = lastName;
     this->nickname = nickname;
-    this->phoneNumber = phoneNumber;
-    this->darkestSecret = darkestSecret;
+    this->phonenumber = phonenumber;
+    this->darkestsecret = darkestsecret;
+    this->index = index;
 }
 
-std::string check_len(std::string str)
+void Contact::SetIndex(int index) {this->index = index + 1;}
+
+std::string Contact::GetIndex() {return std::to_string(index);}
+std::string Contact::GetFirstName() {return firstName;}
+std::string Contact::GetLastName() {return lastName;}
+std::string Contact::GetNickname() {return nickname;}
+std::string Contact::GetPhonenumber() {return phonenumber;}
+std::string Contact::GetDarkestsecret() {return darkestsecret;}
+
+
+
+
+void Contact::DisplayContact()
 {
-    if (str.length() > 10)
-        return (str.substr(0, 9) + ".");
+    std::cout<< YELLOW << "|" << "Index: "<< RESET << Contact::GetIndex() << std::endl;
+    std::cout<< YELLOW << "|"<< "First Name: "<< RESET << Contact::GetFirstName() << std::endl;
+    std::cout<< YELLOW << "|" << "Last Name: "<< RESET << Contact::GetLastName() << std::endl;
+    std::cout<< YELLOW << "|"<< "Nickname: "<< RESET << Contact::GetNickname() << std::endl;
+    std::cout<< YELLOW << "|" << "Phone Number: "<< RESET << Contact::GetPhonenumber() << std::endl;
+    std::cout<< YELLOW << "Darkest Secret: "<< RESET << Contact::GetDarkestsecret() << std::endl;
+    
+}
+
+std::string Contact::return_attr(std::string attr)
+{
+    if (attr.length() >= 10)
+        return(attr.substr(0,9) + ".");
     else
-		return (str);
+        return attr;
 }
 
-void    Contact::Display_contacts(void) const
+void Contact::DisplayTableForm()
 {
-    std::cout << std::setw(10) << this->id << "|";
-    std::cout << std::setw(10) << check_len(this->firstName) << "|";
-    std::cout << std::setw(10) << check_len(this->lastName) << "|";
-    std::cout << std::setw(10) << check_len(this->nickname) << "|";
+    std::cout << "|" << std::setw(10) << Contact::return_attr(Contact::GetIndex()) << "|" ;
+    std::cout << std::setw(10) << Contact::return_attr(Contact::GetFirstName()) << "|" ;
+    std::cout << std::setw(10) << Contact::return_attr(Contact::GetLastName()) << "|" ;
+    std::cout << std::setw(10) << Contact::return_attr(Contact::GetNickname()) << "|" ;
     std::cout << std::endl;
-    return ;
 }
 
-void    Contact::Fulldisplay(void) const
-{
-    std::cout << "Firstname:\t" << this->firstName << std::endl;
-    std::cout << "Last name:\t" << this->lastName << std::endl;
-    std::cout << "Nickname:\t" << this->nickname << std::endl;
-    std::cout << "Phone number:\t" << this->phoneNumber << std::endl;
-    std::cout << "Darkest secret:\t" << this->darkestSecret << std::endl;
-    return ;
-}

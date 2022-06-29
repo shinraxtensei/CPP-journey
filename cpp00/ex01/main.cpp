@@ -1,24 +1,27 @@
 #include "PhoneBook.hpp"
 
-int main(){
+int main ()
+{
     PhoneBook phoneBook;
-    
-    std::string str;
-    while (1)
+    phoneBook.setId(0);
+    std::string choice;
+    while (1337)
     {
-    std::cout << "\033[34m" << "enter a command [add, search, exit] : " << "\033[0m";
-
-    std::getline(std::cin, str);
-    if (str == "exit")
-        break;
-    else if (str == "add")
-        phoneBook.AddContact();
-    else if (str == "search")
-    {
-        phoneBook.SearchContact();
-        
-    }   
-    else
-        std::cout << "\033[31m" << "unknown command\n" << "\033[0m" << std::endl;
+        std::cout << GREEN << "ADD , SEARCH , EXIT" << RESET << std::endl;
+        std::cout << BLUE << "please pick a choice : " << RESET;
+        std::getline(std::cin, choice);
+        if (choice.empty())
+            continue;
+        if (choice == "ADD")
+            phoneBook.AddContact();
+        else if (choice == "SEARCH")
+            phoneBook.SearchContact();
+        else if (choice == "EXIT")
+        {
+            std::cout << GREEN << "athala" << RESET << std::endl;
+            break;
+        }
+        else
+            std::cout << RED << "Error: " << RESET << "Invalid choice" << std::endl;
     }
 }

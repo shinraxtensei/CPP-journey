@@ -1,22 +1,38 @@
-NAME = zombieHorde
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/11 16:42:56 by ahouari           #+#    #+#              #
+#    Updated: 2022/06/11 16:42:57 by ahouari          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS = main.cpp Zombie.cpp zombieHorde.cpp
+NAME = ZombieHorde
 
-OBJS  = $(SRCS:.cpp=.o)
+SRC = Zombie.cpp main.cpp zombieHorde.cpp
 
-CFLAGS  = -Wall -Wextra -Werror -std=c++98
+OBJ = $(SRC:.cpp=.o)
 
-all : $(NAME)
+CC = c++
+
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 
-$(NAME) : $(OBJS)
-	c++ $(CFLAGS) $(SRCS) -o $@
+all: $(NAME)
 
-clean :
-	rm -f $(OBJS)
-fclean :
-	rm -f $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) -o $@ $^
+	@printf "\n\t\033[1;34mCompilation successful\033[0m\n\n"
+
+clean:
+	@rm -f $(OBJ)
+
+fclean:
+	@rm -f $(NAME) $(OBJ)
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re

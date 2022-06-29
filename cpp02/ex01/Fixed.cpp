@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/24 11:26:34 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/24 11:26:34 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 
 #include "Fixed.hpp"
@@ -6,15 +18,16 @@ Fixed::Fixed(void) : value_(0) {
   std::cout << "Default constructor called" << std::endl;
 }
 
+
 Fixed::Fixed(const int value)
-  : value_(value * (1 << kFractionalBits))
 {
+  this->value_ = value * (1 << kFractionalBits);
   std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float value)
-  : value_(std::roundf(value * (1 << kFractionalBits)))
 {
+  this->value_ = std::roundf(value * (1 << kFractionalBits));
   std::cout << "Float constructor called" << std::endl;
 }
 
@@ -32,6 +45,7 @@ Fixed& Fixed::operator=(const Fixed &fixed) {
 Fixed::~Fixed(void) {
   std::cout << "Destructor called" << std::endl;
 }
+
 
 int Fixed::getRawBits (void) const {
   return value_;

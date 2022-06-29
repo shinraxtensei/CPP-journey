@@ -1,67 +1,68 @@
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook(){}
+PhoneBook::~PhoneBook(){}
+int    PhoneBook::getId(){return id;}
+void    PhoneBook::setId(int id){this->id = id;}
 
-PhoneBook::PhoneBook(void)
+std::string PhoneBook::ReqestData(std::string promt)
 {
-    this->id = 0;
-    return ;
-}
-
-PhoneBook::~PhoneBook()
-{
-    return ;
-}
-
-void PhoneBook::AddContact(void)
-{
-    std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
-    std::cout << "enter a first name : " ;
-    std::getline(std::cin, firstName);
-    std::cout  << "enter a last name : " ;
-    std::getline(std::cin, lastName);
-    std::cout  << "enter a nickname : ";
-    std::getline(std::cin, nickname);
-    std::cout <<  "enter a phone number : " ;
-    std::getline(std::cin, phoneNumber);
-    std::cout << "enter a darkest secret : ";
-    std::getline(std::cin, darkestSecret);
-    PhoneBook::contacts[id].AddContact(firstName, lastName, nickname, phoneNumber, darkestSecret, PhoneBook::get_id());
-    std::cout << "\033[32m" << "contact added\n" << "\033[0m" << std::endl;
-    PhoneBook::increment_id();
-}
-
-
-void PhoneBook::SearchContact( void)
-{
-    int i = -1;
-    std::cout << TABLE_HEADER << std::endl;
-    while (++i < PhoneBook::get_id())
-        PhoneBook::contacts[i].Display_contacts();
-    PhoneBook::full_info();
-}
-
-
-void PhoneBook::full_info(void)
-{
-    int index;
-    std::cout  << "enter an index to see full info : " ;
-    std::cin >> index;
-    while (index > PhoneBook::get_id())
+    std::string data;
+    std::cout  << BLUE << "please enter " << promt << ": " << RESET ;
+    std::getline(std::cin, data);
+    if (data.empty())
     {
-        std::cout << "\033[31m" << "index out of range\n" << "\033[0m" << std::endl;
-        std::cout  << "enter an index to see full info : " ;
-        std::cin >> index;
+        std::cout << RED << "Error: " << RESET << "a field can't be empty" << std::endl;
+        return ReqestData(promt);
     }
-    PhoneBook::contacts[index].Fulldisplay();
+    return data;
 }
 
-void PhoneBook::increment_id(void)
+
+void    PhoneBook::AddContact()
 {
-    if(PhoneBook::id < 8)   
-        PhoneBook::id += 1;
+    std::string firstName = ReqestData("first name");
+    std::string lastName = ReqestData("last name");
+    std::string nickname = ReqestData("nickname");
+    std::string phonenumber = ReqestData("phonenumber");
+    std::string darkestsecret = ReqestData("darkestsecret");
+    std::cout << GREEN << "Contact added" << RESET << std::endl;
+    PhoneBook::contacts[PhoneBook::getId()].AddContact(firstName, lastName, nickname, phonenumber, darkestsecret, PhoneBook::getId() + 1);
+    if (PhoneBook::getId() < 8)
+        PhoneBook::setId(PhoneBook::getId() + 1);
+    else
+        PhoneBook::setId(0);
 }
 
-int PhoneBook::get_id(void)
+
+
+void    PhoneBook::SearchContact()
 {
-    return PhoneBook::id;
+    if (id == 0)
+    {
+        std::cout << RED << "Error: " << RESET << "PhoneBook is empty" << std::endl;
+        return ;
+    }
+    std::cout << CYAN << TABLE_HEADER << RESET << std::endl;
+    for (int i = 0 ; i < 8 ; i++)
+    {
+        contacts[i].DisplayTableForm();
+    }
+
+    while (1337)
+    {
+        std::cout << CYAN << "\nchoose a contact to see full info or EXIT to return : " << RESET;
+        std::string choice;
+        std::getline(std::cin, choice);
+        std::string maxids = std::to_string(PhoneBook::getId() );
+        if (choice == "EXIT")
+            break;
+        if (choice.empty() || (choice > maxids || choice <= "0"))
+        {
+            std::cout << RED << "Error: " << RESET << "Invalid choice or index out of range" << std::endl;
+            continue;
+        }
+        int index = std::stoi(choice);
+        contacts[index].DisplayContact();
+    }
 }

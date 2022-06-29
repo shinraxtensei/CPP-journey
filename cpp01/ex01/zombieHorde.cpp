@@ -1,14 +1,24 @@
-#include "Zombie.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/11 16:43:35 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/11 16:43:40 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "Zombie.hpp"
 
 Zombie* zombieHorde( int N, std::string name )
 {
-    Zombie *zombie = new Zombie[N];
-    int i = 0;
-    while (i < N)
+    Zombie *zombies = new Zombie[N];
+    for (int i = 0; i < N; i++)
     {
-        zombie[i].baptiseZombie(name);
-        i++;
+        zombies[i].SetName(name);
+        zombies[i].announce();
     }
-    return zombie;
+    return zombies;
 }

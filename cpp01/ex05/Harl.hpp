@@ -1,3 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/11 16:45:41 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/11 16:45:41 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef HARL_HPP
+#define HARL_HPP
+
+
 #include <iostream>
 
 class Harl {
@@ -11,3 +27,5 @@ class Harl {
         ~Harl(void);
         void complain( std::string level );
 };
+
+#endif

@@ -1,15 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/11 16:42:51 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/11 16:42:52 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Zombie.hpp"
 
-int main()
+
+int main ()
 {
-
-    Zombie *zombie = zombieHorde(5, "hamid");
-    int i = 0;
-    while (i < 5)
-    {
-        zombie[i].announce();
-        i++;
-    }
+    Zombie *zombies = zombieHorde(10, "Bob");
+    delete [] zombies;
     return 0;
-
 }

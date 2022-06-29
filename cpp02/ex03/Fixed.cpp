@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/24 11:26:07 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/24 11:26:07 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 
 #include "Fixed.hpp"
@@ -56,13 +68,6 @@ Fixed Fixed::operator-(const Fixed &fixed) const {
   Fixed f;
 
   f.setRawBits(value_ - fixed.value_);
-  return f;
-}
-
-Fixed Fixed::operator-(void) {
-  Fixed f;
-
-  f.setRawBits(-value_);
   return f;
 }
 

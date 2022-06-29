@@ -1,36 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/24 11:25:56 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/24 12:40:25 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "Point.hpp"
 
-Point::Point(void) : x_(0), y_(0) {}
+const Fixed& Point::getX(void) const {
+  return _x;
+}
 
-Point::Point(const float &x, const float &y) : x_(x), y_(y) {}
+const Fixed& Point::getY(void) const {
+  return _y;
+}
 
-Point::Point(const Point &point) { *this = point; }
-
-Point &Point::operator=(const Point &point) {
-  const_cast<Fixed &>(this->x_) = point.get_x();
-  const_cast<Fixed &>(this->y_) = point.get_y();
+Point& Point::operator=(const Point& p) {
+  if (this != &p) {
+    const_cast<Fixed&>(_x) = p.getX();
+    const_cast<Fixed&>(_y) = p.getY();
+  }
   return *this;
 }
 
-Point Point::operator-(Point const &point) const {
-  Point p;
+Point::Point(void)
+  : _x(0), _y(0) {}
 
-  p.set_x(this->x_ - point.x_);
-  p.set_y(this->y_ - point.y_);
-  return p;
-}
+Point::Point(const float x, const float y)
+  : _x(x), _y(y) {}
+
+Point::Point(const Point& p)
+  : _x(p.getX()), _y(p.getY()) {}
 
 Point::~Point(void) {}
 
-const Fixed &Point::get_x(void) const { return x_; }
-
-const Fixed &Point::get_y(void) const { return y_; }
-
-void Point::set_x(const Fixed &fixed) {
-  const_cast<Fixed &>(this->x_) = fixed.getRawBits();
-}
-
-void Point::set_y(const Fixed &fixed) {
-  const_cast<Fixed &>(this->y_) = fixed.getRawBits();
+std::ostream& operator<<(std::ostream& o, const Point& p) {
+  return o << "( " << p.getX().toFloat() << ", " << p.getY().toFloat() << " )";
 }

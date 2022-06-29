@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/11 16:45:34 by ahouari           #+#    #+#              #
+#    Updated: 2022/06/11 16:45:34 by ahouari          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fileman
 
-SRCS = main.cpp Manager.cpp
+SRCS = main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -19,7 +31,7 @@ clean:
 	@rm -f $(OBJS) *.replace
 
 fclean:
-	@rm -f $(NAME) $(OBJS) *.replace
+	@rm -f $(NAME) $(OBJS) *.replace *.txt
 
 re : fclean all
 

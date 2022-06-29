@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/11 16:45:38 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/11 16:45:38 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Harl.hpp"
 
 // creat all the functions
@@ -15,8 +27,8 @@ void Harl::error(void) {
 }
 
 
-Harl::Harl(void) { return ;}
-Harl::~Harl(void) {return ;}
+Harl::Harl(void) {}
+Harl::~Harl(void) {}
 
 
 void Harl::complain(std::string level) {
@@ -24,10 +36,13 @@ void Harl::complain(std::string level) {
     std::string levels[] = {"debug", "info", "warning", "error"};
     void    (Harl::*functionPointer[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     int i  = -1;
-    while(++i < 4) {
-        if (levels[i] == level) {
-            (this->*functionPointer[i])();
-            return ;
-        }
-    }
+    // while(++i < 4) {
+    //     if (levels[i] == level) {
+    //         (this->*functionPointer[i])();
+    //         return ;
+    //     }
+    // }
+    while(++i < 4 && levels[i] != level);
+    (this->*functionPointer[i])();
+    
 }

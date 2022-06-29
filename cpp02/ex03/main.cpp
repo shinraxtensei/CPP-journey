@@ -1,22 +1,33 @@
-#include <iostream>
-#include "bsp.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/24 11:26:02 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/24 11:26:02 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Point.hpp"
 
 int main(void) {
-  std::cout.setf(std::ios::boolalpha);
-  std::cout << bsp::bsp(Point(0.0f, 0.0f), Point(0.0f, 1.0f), Point(1.0f, 0.0f),
-                        Point(2.0f, 2.0f))
-            << std::endl; // false
-  std::cout << bsp::bsp(Point(0.0f, 0.0f), Point(0.0f, 1.0f), Point(1.0f, 0.0f),
-                        Point(0.0f, 0.0f))
-            << std::endl; // false
-  std::cout << bsp::bsp(Point(0.0f, 0.0f), Point(0.0f, 1.0f), Point(1.0f, 0.0f),
-                        Point(0.4f, 0.4f))
-            << std::endl; // true
-  std::cout << bsp::bsp(Point(0.0f, 0.0f), Point(0.0f, 2.0f), Point(2.0f, 0.0f),
-                        Point(0.5f, 0.5f))
-            << std::endl; // true
-  std::cout << bsp::bsp(Point(0.0f, 0.0f), Point(0.0f, 2.0f), Point(2.0f, 0.0f),
-                        Point(1.0f, 1.0f))
-            << std::endl; // false
+  Point a(0.0, 0.0);
+  Point b(0.0, 4.0);
+  Point c(5.0, 0.0);
+  Point hit1(1.0, 1.0);
+  Point hit2(10.0, 10.0);
+
+  std::cout << "Point a is " << a << std::endl;
+  std::cout << "Point b is " << b << std::endl;
+  std::cout << "Point c is " << c << std::endl;
+  std::cout << "Hit Point1 is " << hit1 << std::endl;
+  std::cout << "Hit Point2 is " << hit2 << std::endl;
+  std::cout << std::endl;
+  std::cout << "Hit Point1 is " << (bsp(a, b, c, hit1) ? "inside " : "outside ")
+    << "of the triangle!" << std::endl;
+  std::cout << "Hit Point1 is " << (bsp(a, b, c, hit2) ? "inside " : "outside ")
+    << "of the triangle!" << std::endl;
   return 0;
 }

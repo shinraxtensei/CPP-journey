@@ -1,9 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/26 09:21:33 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/26 09:23:04 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "ClapTrap.hpp"
 
-int main ()
+# define H_RESET	"\e[0m"
+
+int main(void)
 {
-    ClapTrap clap("clap1");
-    clap.takeDamage(10);
-    clap.beRepaired(5);
-    clap.attack("clap2");
+    ClapTrap hamid("hamid");
+    ClapTrap said("said");
+    std::cout << H_RESET << said.getName() << ": salam ou3alikoum" << std::endl;
+    std::cout << hamid.getName() << ": wa3alikoum salam" << std::endl;
+    std::cout  << said.getName() << ": ara derhem" << std::endl;
+    std::cout  << hamid.getName() << ": ma3endich" << std::endl;
+    std::cout  << said.getName() << ":ara garo" << std::endl;
+    std::cout  << hamid.getName() << ": ma3endich" << std::endl;
+    std::cout << said.getName() << ": hak lfa9ira tmok" << std::endl;
+    said.attack(hamid.getName());
 }

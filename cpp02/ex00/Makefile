@@ -1,8 +1,8 @@
-NAME = Fixed
+NAME = fixed
 
-SRCS = main.cpp Fixed.cpp
+SRC = Fixed.cpp main.cpp
 
-OBJS = $(SRCS:.cpp=.o)
+OBJ = $(SRC:.cpp=.o)
 
 CC = c++
 
@@ -11,15 +11,15 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) -o $@ $^
 	@printf "\n\t\033[1;34mCompilation successful\033[0m\n\n"
 
 clean:
-	@rm -f $(OBJS) 
+	@rm -f $(OBJ)
 
 fclean:
-	@rm -f $(NAME) $(OBJS) 
+	@rm -f $(NAME) $(OBJ)
 
 re : fclean all
 

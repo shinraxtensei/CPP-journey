@@ -1,12 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/24 11:24:57 by ahouari           #+#    #+#             */
+/*   Updated: 2022/06/24 11:24:57 by ahouari          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 
 #ifndef FIXED_H_
 # define FIXED_H_
 
+#include <iostream>
+#include <ostream>
 
 #include <iostream>
 #include <cmath>
-#include <iostream>
-#include <ostream>
 
 class Fixed {
 public:
@@ -26,7 +39,6 @@ public:
 
   Fixed operator+(const Fixed &fixed) const;
   Fixed operator-(const Fixed &fixed) const;
-  Fixed operator-(void);
   Fixed operator*(const Fixed &fixed) const;
   Fixed operator/(const Fixed &fixed) const;
 
@@ -54,4 +66,4 @@ private:
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
 
-#endif
+#endif 
