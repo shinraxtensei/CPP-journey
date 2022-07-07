@@ -13,8 +13,9 @@
 
 #include "DiamondTrap.hpp"
 
-// color code for resetting the color
+
 # define H_RESET	"\e[0m"
+
 
 int main(void)
 {
