@@ -36,12 +36,6 @@ void Harl::complain(std::string level) {
     std::string levels[] = {"debug", "info", "warning", "error"};
     void    (Harl::*functionPointer[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     int i  = -1;
-    // while(++i < 4) {
-    //     if (levels[i] == level) {
-    //         (this->*functionPointer[i])();
-    //         return ;
-    //     }
-    // }
     while(++i < 4 && levels[i] != level);
     (this->*functionPointer[i])();
     

@@ -102,4 +102,6 @@ void	Account::displayStatus(void) const
 	std::cout << "withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 
-void	Account::_displayTimestamp(void) {std::cout << "[13371337_696969] ";}
+void	Account::_displayTimestamp(void) {
+	std::cout << "[13371337_696969] ";
+	}

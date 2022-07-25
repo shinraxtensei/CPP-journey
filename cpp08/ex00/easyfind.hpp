@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahouari <ahouari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 16:42:29 by ahouari           #+#    #+#             */
-/*   Updated: 2022/06/11 16:42:31 by ahouari          ###   ########.fr       */
+/*   Created: 2022/07/25 15:50:40 by ahouari           #+#    #+#             */
+/*   Updated: 2022/07/25 15:51:01 by ahouari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#pragma once 
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <exception>
+#include <list>
 
-Zombie* newZombie( std::string name )
+template <typename T>
+int easyfind(T& container , int value)
 {
-    Zombie* zombie = new Zombie(name);
-    return zombie;
+    typename T::iterator  it = std::find(container.begin(), container.end(), value);
+    if (it == container.end())
+        throw std::exception();
+    return std::distance(container.begin(), it);
 }
+
